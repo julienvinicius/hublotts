@@ -1,22 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Container,Navbar} from 'react-bootstrap'
+import {sampleProducts} from './data'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-     <div>
+     <div className="d-flex flex-column vh-100">
       <header>
-          Hublot
+        <Navbar className='navbar-custom' bg="dark" variant='dark' expand="lg">
+          <Container>
+            <Navbar.Brand className='navbar-brand'>Hublot</Navbar.Brand>
+          </Container>
+        </Navbar>
       </header>
       <main>
-
-      </main>
-      <footer>
-        reservado
-      </footer>
+        <ul>
+        {sampleProducts.map((product) => (
+          <li key={product.slug}>
+            <img src={product.image} alt={product.name} className="product-image"></img>
+              <h2>{product.name}</h2>
+              <p>${product.price}</p>
+          </li>
+        ))}
+        </ul>
+        </main>
+      <footer>direitos reservados</footer>
    </div>
   )
 }
